@@ -65,7 +65,9 @@ def Predict(text):
 
     print(predict_akhir, np.argmax(predict_x), predict_y)
     payload = {
-        "category" : predict_y
+        "title" : text,
+        "category" : predict_y,
+        "confidence" : predict_akhir[np.argmax(predict_x)]
     }
     return payload
     # new_complaint = ['matamu neng gusti']
@@ -74,4 +76,4 @@ def Predict(text):
     # pred = model.predict(np.array(padded))
     # print(pred, np.argmax(pred))
 
-# print(Predict('Kisah Tanah Jawa: Jagat Lelembut'))
+print(Predict('Seorang Tua di Kaki Gunung'))

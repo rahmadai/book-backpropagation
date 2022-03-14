@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Indentifikasi Buku Jenis Karya Sastra</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
+        .navbar-brand {
+            font-size: large;
+        }
+
+        .title {
+            text-align: center;
+            font-family: 'Rubik', sans-serif;
+            font-size: 36px;
+            font-weight: 600;
+        }
+
+        .result {
+            font-family: 'Rubik', sans-serif;
+            font-weight: 500;
+        }
+
+        @media (max-width:500px) {
+            .navbar-brand {
+                font-size: small;
+            }
+
+            .title {
+                font-size: 27px;
+            }
+        }
+    </style>
+
+<body>
+    <navbar class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom" style="font-family: 'Roboto', serif;">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
+                    class="bi bi-journals" viewBox="0 0 16 16">
+                    <path
+                        d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z" />
+                    <path
+                        d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z" />
+                </svg> IDENTIFIKASI JENIS KARYA SASTRA
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dataset">
+                            Dataset
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pengujian">
+                            Pengujian
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </navbar>
+    <div class="container-fluid my-2">
+        <div class="jumbotron title">
+            Sistem Indentifikasi Buku Jenis Karya Sastra
+            Berdasarkan Judul Buku Dengan Algoritma Backpropagation
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-auto">
+            <div style="font-family: 'Rubik', sans-serif; text-align: center; font-size: larger; font-weight: bold;">
+                IDENTIFIKASI KARYA SASTRA
+            </div>
+        </div>
+    </div>
+    <div class="container my-2">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <input class="form-control is-invalid" aria-describedby="searchFeedback" type="text" id="search"
+                    placeholder="Masukkan Judul Buku" required>
+                <div id="searchFeedback" class="invalid-feedback">
+                    Judul Buku / Karya Sastra Diperlukan
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-dark" id="btnSearch" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg> Search
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container my-4 ml-auto result" id="result">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="jumbotron">
+                    <h5>
+                        <b>Hasil Identifikasi</b>
+                    </h5>
+                    <p id="summary">
+
+                    </p>
+                    <br>
+                    <p>
+                    <center><h5>
+                        <b>Confidence</b>
+                        <br>
+                        <p id="percentage">
+                            
+                        </p>
+                    </h5></center>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var judul = document.getElementById('search')
+        var btn = document.getElementById('btnSearch')
+        var result = document.getElementById('result')
+        var summary = document.getElementById('summary')
+        var percent = document.getElementById('percentage')
+        judul.onkeyup = () => {
+            if (judul.value != "") {
+                judul.classList.remove("is-invalid")
+                judul.classList.add("is-valid")
+                btn.disabled = false
+            } else {
+                judul.classList.add("is-invalid")
+                judul.classList.remove("is-valid")
+                btn.disabled = true
+            }
+        }
+        btn.onclick = () => {
+            console.log(judul.value)
+            var js = JSON.stringify({ "text": judul.value });
+
+            $.ajax({
+
+                url: '/predict',
+                type: 'POST',
+                data: js,
+                dataType: 'json',
+                contentType: 'application/json',
+                timeout: 15000,
+                beforeSend: function (xhr) {
+                    /* Authorization header */
+                    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+                    xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
+                    // xhr.setRequestHeader('API-Key', '');
+                    xhr.setRequestHeader("Access-Control-Allow-Headers", "Origin, Content-Type, X-Auth-Token");
+                    xhr.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
+                },
+                success: function (data) {
+                    console.log(data)
+                    summary.innerHTML = "Berdasarkan hasil identifikasi menggunakan algoritma Backpropagation Buku "+ data.title + " termasuk dalam " + data.category
+                    percent.innerHTML = data.confidence
+                },
+                error: function (req, mess) {
+                    console.log(req)
+                }
+            });
+            return false;
+
+        }
+
+    </script>
+</body>
+
+</html>
