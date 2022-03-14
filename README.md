@@ -36,3 +36,9 @@ This program using back propagation to clasify book (Melayu and Javanese).
 % cd FrontEnd
 % python app.py
 ```
+
+**4. Link **
+```bash
+http://35.219.113.60:8607/
+```
+
