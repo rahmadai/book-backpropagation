@@ -29,3 +29,10 @@ This program using back propagation to clasify book (Melayu and Javanese).
 ```bash
 % pip install -r requirements.txt
 ```
+
+**3. Front End**
+
+```bash
+% cd FrontEnd
+% python app.py
+```
